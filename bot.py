@@ -31,9 +31,9 @@ async def start_command(message:Message):
     telegram_id = message.from_user.id
     try:
         db.add_user(full_name=full_name,telegram_id=telegram_id)
-        await message.answer(text="Assalomu alaykum, botimizga hush kelibsiz")
+        await message.answer(text="Assalomu alaykum, botimizga hush kelibsiz, Bu bot sizga niklarni chiroyli yozishga yordam beradi")
     except:
-        await message.answer(text="Assalomu alaykum")
+        await message.answer(text="Assalomu alaykum foydalanuvchi ism kiriting keyin sizga chiroyli qilib chiqarib beradi")
 
 
 @dp.message(IsCheckSubChannels())
@@ -86,6 +86,39 @@ async def send_advert(message:Message,state:FSMContext):
     await message.answer(f"Reklama {count}ta foydalanuvchiga yuborildi")
     await state.clear()
 
+
+
+import random 
+def nick_generator(text):
+    style = ["𝓺𝔀𝓮𝓻𝓽𝔂𝓾𝓲𝓸𝓹𝓪𝓼𝓭𝓯𝓰𝓱𝓳𝓴𝓵𝔃𝔁𝓬𝓿𝓫𝓷𝓶","qωєятуυισραѕ∂ƒgнנкℓzχ¢νвηм","𝚚𝚠𝚎𝚛𝚝𝚢𝚞𝚒𝚘𝚙𝚊𝚜𝚍𝚏𝚐𝚑𝚓𝚔𝚕𝚣𝚡𝚌𝚟𝚋𝚗𝚖","𝐪𝐰𝐞𝐫𝐭𝐲𝐮𝐢𝐨𝐩𝐚𝐬𝐝𝐟𝐠𝐡𝐣𝐤𝐥𝐳𝐱𝐜𝐯𝐛𝐧𝐦","ＱＷＥＲＴＹＵＩＯＰＡＳＤԲＧＨＪＫＬＺＸСＶＢＮⅯ","𝒒𝒘𝒆𝒓𝒕𝒚𝒖𝒊𝒐𝒑𝒂𝒔𝒅𝒇𝒈𝒉𝒋𝒌𝒍𝒛𝒙𝒄𝒗𝒃𝒏𝒎","𝒒𝒘𝒆𝒓𝒕𝒚𝒖𝒊𝒐𝒑𝒂𝒔𝒅𝒇𝒈𝒉𝒋𝒌𝒍𝒛𝒙𝒄𝒗𝒃𝒏𝒎","ǫᴡᴇʀᴛʏᴜɪᴏᴘᴀsᴅғɢʜᴊᴋʟᴢxᴄᴠʙɴᴍ","𝕢𝕨𝕖𝕣𝕥𝕪𝕦𝕚𝕠𝕡𝕒𝕤𝕕𝕗𝕘𝕙𝕛𝕜𝕝𝕫𝕩𝕔𝕧𝕓𝕟𝕞","𝕢𝕨𝕖𝕣𝕥𝕪𝕦𝕚𝕠𝕡𝕒𝕤𝕕𝕗𝕘𝕙𝕛𝕜𝕝𝕫𝕩𝕔𝕧𝕓𝕟𝕞","ＱＷＥＲＴＹＵＩＯＰＡＳＤԲＧＨＪＫＬＺＸСＶＢＮⅯ","𝓺𝔀𝓮𝓻𝓽𝔂𝓾𝓲𝓸𝓹𝓪𝓼𝓭𝓯𝓰𝓱𝓳𝓴𝓵𝔃𝔁𝓬𝓿𝓫𝓷𝓶","𝐪𝐰𝐞𝐫𝐭𝐲𝐮𝐢𝐨𝐩𝐚𝐬𝐝𝐟𝐠𝐡𝐣𝐤𝐥𝐳𝐱𝐜𝐯𝐛𝐧𝐦"]
+    emojies = ["🐬","🪳","🪲","🐛","☘️","🎄","✨","🌟","❄️","꧁☆","⚜️","🔱","❮꯭❶꯭꯭➣꯭ ✦꯭•꯭|꯭🖤 ","💸🧲","❄️|꯭•|꯭💫","🌊🌪ꦿꦼ꯭🐊","🛡"]
+    
+    total_result="Natija:\n"
+    for j in style: 
+        result = text
+        emoji = random.choice(emojies)
+        for index,i in enumerate("qwertyuiopasdfghjklzxcvbnm"):
+            result = result.replace(i,j[index])
+        total_result += f"<code>{emoji}{result}{emoji}</code>\n"
+    return total_result
+
+
+@dp.message(F.text)
+async def nicklar(message:Message):
+    # text = "𝓺𝔀𝓮𝓻𝓽𝔂𝓾𝓲𝓸𝓹𝓪𝓼𝓭𝓯𝓰𝓱𝓳𝓴𝓵𝔃𝔁𝓬𝓿𝓫𝓷𝓶"
+    # text2 = "qwertyuiopasdfghjklzxcvbnm"
+    # text3 = "𝕢𝕨𝕖𝕣𝕥𝕪𝕦𝕚𝕠𝕡𝕒𝕤𝕕𝕗𝕘𝕙𝕛𝕜𝕝𝕫𝕩𝕔𝕧𝕓𝕟𝕞"
+    # result = message.text
+    # result2 = message.text
+    # for i in range(len(text2)):
+    #     result2 = result2.replace(text2[i],text3[i])
+    #     result = result.replace(text2[i],text[i])
+    
+    # await message.answer(f"<code>✨{result}✨</code>\n<code>🦕{result2}🦕</code>")
+
+    text = nick_generator(message.text)
+
+    await message.answer(text)
 
 
 
